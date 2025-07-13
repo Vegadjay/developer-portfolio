@@ -139,7 +139,7 @@ const DockIcon = ({
       ref={ref}
       style={{ width: scaleSize, height: scaleSize, padding }}
       className={cn(
-        "flex aspect-square cursor-pointer items-center justify-center rounded-full transition-all duration-200 hover:bg-white/10 hover:scale-105 hover:shadow-lg",
+        "flex aspect-square cursor-pointer items-center justify-center transition-all duration-200 hover:scale-105 hover:shadow-lg rounded-lg",
         className,
       )}
       {...(tooltip ? {} : { whileHover: { scale: 1.05 }, whileTap: { scale: 0.95 } })}

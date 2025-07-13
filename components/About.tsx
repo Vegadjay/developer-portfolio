@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { aboutMeData } from '../data/aboutme';
+import { aboutMeData } from '@/data/aboutme';
 import { Github, Linkedin, Twitter, Globe } from 'lucide-react';
 
 const About = () => {

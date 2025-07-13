@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import Projects from '../../components/Projects';
-import Navigation from '../../components/Navigation';
+import Projects from '@/components/Projects';
+import Navigation from '@/components/Navigation';
 
 export default function ProjectsPage() {
   return (

@@ -80,3 +80,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+::selection{
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background-color: #ffffff;
+  color: #000000;
+}

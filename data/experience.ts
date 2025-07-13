@@ -8,14 +8,14 @@ export interface Experience {
   description: string;
   technologies: string[];
   achievements: string[];
-  current: boolean;
+  logo: string;
 }
 
 export const experienceData: Experience[] = [
   {
     id: "1",
-    company: "Tech Solutions Inc",
-    position: "Frontend Developer Intern",
+    company: "Google",
+    position: "Software Engineer Intern",
     duration: "Jun 2023 - Present",
     startDate: "2023-06",
     endDate: "",
@@ -26,12 +26,12 @@ export const experienceData: Experience[] = [
       "Improved website loading speed by 25%",
       "Learned modern development practices"
     ],
-    current: true
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
   },
   {
     id: "2",
-    company: "Freelance Projects",
-    position: "Web Developer",
+    company: "Meta",
+    position: "Software Engineer Intern",
     duration: "Jan 2023 - May 2023",
     startDate: "2023-01",
     endDate: "2023-05",
@@ -42,12 +42,12 @@ export const experienceData: Experience[] = [
       "Gained experience in client communication",
       "Learned project management skills"
     ],
-    current: false
+    logo: "https://cdn-icons-png.flaticon.com/512/6033/6033716.png"
   },
   {
     id: "3",
-    company: "Personal Projects",
-    position: "Self-taught Developer",
+    company: "Amazon",
+    position: "Software Engineer Intern",
     duration: "Sep 2022 - Dec 2022",
     startDate: "2022-09",
     endDate: "2022-12",
@@ -58,6 +58,6 @@ export const experienceData: Experience[] = [
       "Built first portfolio website",
       "Learned version control with Git"
     ],
-    current: false
+    logo: "https://static.vecteezy.com/system/resources/previews/014/018/561/non_2x/amazon-logo-on-transparent-background-free-vector.jpg"
   }
 ];

@@ -28,16 +28,15 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-900 py-20">
+    <div className="bg-white dark:bg-zinc-900 py-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className='mb-10'
 >
-          <h1 className="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white">
+          <h1 className="text-3xl lg:text-4xl font-bold text-zinc-900 dark:text-white">
             Projects
           </h1>
         </motion.div>
@@ -46,7 +45,7 @@ const Projects = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4"
         >
           {heroProjectsData.map((project, index) => (
             <ProjectCard

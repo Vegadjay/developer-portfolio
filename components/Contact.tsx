@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { aboutMeData } from '../data/aboutme';
+import { aboutMeData } from '@/data/aboutme';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Contact = () => {

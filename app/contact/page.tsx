@@ -2,10 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { aboutMeData } from '../../data/aboutme';
+import { aboutMeData } from '@/data/aboutme';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import Navigation from '../../components/Navigation';
-import Clock from '../../components/Clock';
+import Navigation from '@/components/Navigation';
 
 export default function Contact() {
   return (
