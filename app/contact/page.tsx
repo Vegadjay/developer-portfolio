@@ -1,34 +1,33 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { aboutMeData } from '@/data/aboutme';
-import { Mail, Phone, MapPin } from 'lucide-react';
-import Navigation from '@/components/Navigation';
+import React from "react";
+import { motion } from "framer-motion";
+import { aboutMeData } from "@/data/aboutme";
+import { Mail, Phone, MapPin } from "lucide-react";
+import Navigation from "@/components/Navigation";
 
 export default function Contact() {
   return (
-    <main className="min-h-screen bg-white dark:bg-zinc-900 transition-colors duration-300">
-      
+    <main className="min-h-screen bg-white transition-colors duration-300 dark:bg-zinc-900">
       <div className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="mb-16 text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-4">
+            <h1 className="mb-4 text-4xl font-bold text-zinc-900 dark:text-white md:text-5xl">
               Get In Touch
             </h1>
-            <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full mb-8"></div>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              I'm always open to discussing new opportunities, interesting projects, 
-              or just having a chat about technology and development.
+            <div className="mx-auto mb-8 h-1 w-20 rounded-full bg-blue-500"></div>
+            <p className="mx-auto max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+              I'm always open to discussing new opportunities, interesting
+              projects, or just having a chat about technology and development.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -36,15 +35,22 @@ export default function Contact() {
               whileHover={{ scale: 1.05 }}
               className="text-center"
             >
-              <div className="bg-white dark:bg-zinc-800 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mail className="text-blue-600 dark:text-blue-400" size={24} />
+              <div className="rounded-lg bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-zinc-800">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30">
+                  <Mail
+                    className="text-blue-600 dark:text-blue-400"
+                    size={24}
+                  />
                 </div>
-                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">Email</h3>
-                <p className="text-zinc-600 dark:text-zinc-400 mb-4">Drop me a line anytime</p>
+                <h3 className="mb-2 text-xl font-bold text-zinc-900 dark:text-white">
+                  Email
+                </h3>
+                <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+                  Drop me a line anytime
+                </p>
                 <a
                   href={`mailto:${aboutMeData.email}`}
-                  className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                  className="font-medium text-blue-600 hover:underline dark:text-blue-400"
                 >
                   {aboutMeData.email}
                 </a>
@@ -58,15 +64,22 @@ export default function Contact() {
               whileHover={{ scale: 1.05 }}
               className="text-center"
             >
-              <div className="bg-white dark:bg-zinc-800 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Phone className="text-green-600 dark:text-green-400" size={24} />
+              <div className="rounded-lg bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-zinc-800">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+                  <Phone
+                    className="text-green-600 dark:text-green-400"
+                    size={24}
+                  />
                 </div>
-                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">Phone</h3>
-                <p className="text-zinc-600 dark:text-zinc-400 mb-4">Let's have a conversation</p>
+                <h3 className="mb-2 text-xl font-bold text-zinc-900 dark:text-white">
+                  Phone
+                </h3>
+                <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+                  Let's have a conversation
+                </p>
                 <a
                   href={`tel:${aboutMeData.phone}`}
-                  className="text-green-600 dark:text-green-400 hover:underline font-medium"
+                  className="font-medium text-green-600 hover:underline dark:text-green-400"
                 >
                   {aboutMeData.phone}
                 </a>
@@ -80,13 +93,20 @@ export default function Contact() {
               whileHover={{ scale: 1.05 }}
               className="text-center"
             >
-              <div className="bg-white dark:bg-zinc-800 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="text-purple-600 dark:text-purple-400" size={24} />
+              <div className="rounded-lg bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-zinc-800">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
+                  <MapPin
+                    className="text-purple-600 dark:text-purple-400"
+                    size={24}
+                  />
                 </div>
-                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">Location</h3>
-                <p className="text-zinc-600 dark:text-zinc-400 mb-4">Come say hello</p>
-                <span className="text-purple-600 dark:text-purple-400 font-medium">
+                <h3 className="mb-2 text-xl font-bold text-zinc-900 dark:text-white">
+                  Location
+                </h3>
+                <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+                  Come say hello
+                </p>
+                <span className="font-medium text-purple-600 dark:text-purple-400">
                   {aboutMeData.location}
                 </span>
               </div>
@@ -103,7 +123,7 @@ export default function Contact() {
               href={`mailto:${aboutMeData.email}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center rounded-lg bg-blue-600 px-8 py-4 font-medium text-white shadow-lg transition-all duration-300 hover:bg-blue-700 hover:shadow-xl"
             >
               <Mail size={20} className="mr-2" />
               Send me an email

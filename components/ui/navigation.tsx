@@ -139,10 +139,12 @@ const DockIcon = ({
       ref={ref}
       style={{ width: scaleSize, height: scaleSize, padding }}
       className={cn(
-        "flex aspect-square cursor-pointer items-center justify-center transition-all duration-200 hover:scale-105 hover:shadow-lg rounded-lg",
+        "flex aspect-square cursor-pointer items-center justify-center rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg",
         className,
       )}
-      {...(tooltip ? {} : { whileHover: { scale: 1.05 }, whileTap: { scale: 0.95 } })}
+      {...(tooltip
+        ? {}
+        : { whileHover: { scale: 1.05 }, whileTap: { scale: 0.95 } })}
       {...props}
     >
       {children}
@@ -152,9 +154,7 @@ const DockIcon = ({
   if (tooltip) {
     return (
       <Tooltip>
-        <TooltipTrigger asChild>
-          {iconContent}
-        </TooltipTrigger>
+        <TooltipTrigger asChild>{iconContent}</TooltipTrigger>
         <TooltipContent>
           <p>{tooltip}</p>
         </TooltipContent>

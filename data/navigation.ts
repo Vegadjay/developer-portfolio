@@ -17,6 +17,6 @@ export const navigationData = {
   socialLinks: {
     github: "https://github.com/johndoe",
     linkedin: "https://linkedin.com/in/johndoe",
-    leetcode: "https://leetcode.com/johndoe"
-  }
+    leetcode: "https://leetcode.com/johndoe",
+  },
 };

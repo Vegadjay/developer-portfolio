@@ -27,15 +27,29 @@ export const aboutMeData: AboutMe = {
   email: "jayvegad10@gmail.com",
   phone: "+91 8849251028",
   skills: [
-    "HTML", "CSS", "JavaScript", "React", "Next.js", "TypeScript",
-    "Tailwind CSS", "Git", "GitHub", "Responsive Design", "Node.js",
-    "Express.js", "MongoDB", "Firebase", "Vercel", "Figma"
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Git",
+    "GitHub",
+    "Responsive Design",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Firebase",
+    "Vercel",
+    "Figma",
   ],
   socialLinks: {
     github: "https://github.com/Vegadjay",
     linkedin: "https://linkedin.com/in/vegadjay",
     twitter: "https://twitter.com/JAY_VEGAD_",
-    leetcode: "https://fuck-leetcode-dusky.vercel.app/"
+    leetcode: "https://fuck-leetcode-dusky.vercel.app/",
   },
-  profileImage: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
+  profileImage:
+    "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
 };
