@@ -26,9 +26,14 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="mb-8"
         >
-          <h1 className="text-3xl font-bold text-zinc-900 dark:text-white lg:text-4xl">
+          <motion.h1
+            initial={{ opacity: 0, y: -30, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl font-bold text-zinc-900 dark:text-white lg:text-4xl"
+          >
             Experience
-          </h1>
+          </motion.h1>
         </motion.div>
 
         <motion.div

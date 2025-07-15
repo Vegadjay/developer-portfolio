@@ -12,12 +12,6 @@ import {
 import React, { PropsWithChildren, useRef } from "react";
 
 import { cn } from "@/lib/utils";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
   className?: string;
@@ -33,7 +27,7 @@ const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md",
+  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md",
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -45,7 +39,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
       iconMagnification = DEFAULT_MAGNIFICATION,
       iconDistance = DEFAULT_DISTANCE,
       direction = "middle",
-      ...props
+      ...props  
     },
     ref,
   ) => {
@@ -70,21 +64,19 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     };
 
     return (
-      <TooltipProvider>
-        <motion.div
-          ref={ref}
-          onMouseMove={(e) => mouseX.set(e.pageX)}
-          onMouseLeave={() => mouseX.set(Infinity)}
-          {...props}
-          className={cn(dockVariants({ className }), {
-            "items-start": direction === "top",
-            "items-center": direction === "middle",
-            "items-end": direction === "bottom",
-          })}
-        >
-          {renderChildren()}
-        </motion.div>
-      </TooltipProvider>
+      <motion.div
+        ref={ref}
+        onMouseMove={(e) => mouseX.set(e.pageX)}
+        onMouseLeave={() => mouseX.set(Infinity)}
+        {...props}
+        className={cn(dockVariants({ className }), {
+          "items-start": direction === "top",
+          "items-center": direction === "middle",
+          "items-end": direction === "bottom",
+        })}
+      >
+        {renderChildren()}
+      </motion.div>
     );
   },
 );
@@ -100,7 +92,6 @@ export interface DockIconProps
   className?: string;
   children?: React.ReactNode;
   props?: PropsWithChildren;
-  tooltip?: string;
 }
 
 const DockIcon = ({
@@ -110,7 +101,6 @@ const DockIcon = ({
   mouseX,
   className,
   children,
-  tooltip,
   ...props
 }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -134,35 +124,19 @@ const DockIcon = ({
     damping: 12,
   });
 
-  const iconContent = (
+  return (
     <motion.div
       ref={ref}
       style={{ width: scaleSize, height: scaleSize, padding }}
       className={cn(
-        "flex cursor-pointer items-center justify-center transition-all duration-200",
+        "flex aspect-square cursor-pointer items-center justify-center rounded-full",
         className,
       )}
-      {...(tooltip
-        ? {}
-        : { whileHover: { scale: 1.05 }, whileTap: { scale: 0.95 } })}
       {...props}
     >
       {children}
     </motion.div>
   );
-
-  if (tooltip) {
-    return (
-      <Tooltip>
-        <TooltipTrigger asChild>{iconContent}</TooltipTrigger>
-        <TooltipContent>
-          <p>{tooltip}</p>
-        </TooltipContent>
-      </Tooltip>
-    );
-  }
-
-  return iconContent;
 };
 
 DockIcon.displayName = "DockIcon";

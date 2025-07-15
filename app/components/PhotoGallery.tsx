@@ -15,9 +15,14 @@ const PhotoGallery = () => {
   return (
     <div className="py-16">
       <div className="mx-auto max-w-[890px] px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-12 text-3xl font-bold text-zinc-900 dark:text-white lg:text-4xl">
+        <motion.h2
+          initial={{ opacity: 0, y: -30, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8 }}
+          className="mb-12 text-3xl font-bold text-zinc-900 dark:text-white lg:text-4xl"
+        >
           {title}
-        </h2>
+        </motion.h2>
 
         <div className="space-y-8">
           {/* Left scrolling marquee */}
@@ -44,7 +49,7 @@ const PhotoGallery = () => {
                       alt={`Left Gallery image ${idx + 1}`}
                       width={imageWidth}
                       height={imageHeight}
-                      className="rounded-xl border border-zinc-200 object-cover shadow-2xl"
+                      className="rounded-xl border border-black object-cover dark:border-zinc-200"
                       style={{
                         width: imageWidth,
                         height: imageHeight,
@@ -84,7 +89,7 @@ const PhotoGallery = () => {
                       alt={`Right Gallery image ${idx + 1}`}
                       width={imageWidth}
                       height={imageHeight}
-                      className="rounded-xl border border-zinc-200 object-cover shadow-2xl"
+                      className="rounded-xl border border-black object-cover dark:border-zinc-200"
                       style={{
                         width: imageWidth,
                         height: imageHeight,
@@ -124,7 +129,7 @@ const PhotoGallery = () => {
                       alt={`Center Gallery image ${idx + 1}`}
                       width={imageWidth}
                       height={imageHeight}
-                      className="rounded-xl border border-zinc-200 object-cover shadow-2xl"
+                      className="rounded-xl border border-black object-cover dark:border-zinc-200"
                       style={{
                         width: imageWidth,
                         height: imageHeight,

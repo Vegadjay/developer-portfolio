@@ -16,9 +16,14 @@ const Experience = () => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">
+          <motion.h2
+            initial={{ opacity: 0, y: -30, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.8 }}
+            className="mb-4 text-3xl font-bold text-gray-900 dark:text-white md:text-4xl"
+          >
             Experience
-          </h2>
+          </motion.h2>
           <div className="mx-auto h-1 w-20 rounded-full bg-blue-500"></div>
         </motion.div>
 
@@ -37,17 +42,6 @@ const Experience = () => {
                 index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-4 z-10 h-4 w-4 -translate-x-2 transform rounded-full bg-blue-500 shadow-lg md:left-1/2 md:-translate-x-2">
-                {exp.current && (
-                  <motion.div
-                    className="absolute inset-0 rounded-full bg-blue-500"
-                    animate={{ scale: [1, 1.5, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                )}
-              </div>
-
               <div
                 className={`ml-12 w-full md:ml-0 md:w-5/12 ${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}
               >
@@ -55,17 +49,6 @@ const Experience = () => {
                   whileHover={{ scale: 1.02 }}
                   className="rounded-lg bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-800"
                 >
-                  <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {exp.position}
-                    </h3>
-                    {exp.current && (
-                      <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800 dark:bg-green-900/30 dark:text-green-200">
-                        Current
-                      </span>
-                    )}
-                  </div>
-
                   <div className="mb-4 space-y-2">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <MapPin size={16} className="mr-2" />
