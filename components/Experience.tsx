@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { experienceData } from "@/data/experience";
 import { Calendar, MapPin } from "lucide-react";
 
@@ -9,35 +8,17 @@ const Experience = () => {
   return (
     <section id="experience" className="py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16 text-center"
-        >
-          <motion.h2
-            initial={{ opacity: 0, y: -30, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.8 }}
-            className="mb-4 text-3xl font-bold text-gray-900 dark:text-white md:text-4xl"
-          >
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
             Experience
-          </motion.h2>
+          </h2>
           <div className="mx-auto h-1 w-20 rounded-full bg-blue-500"></div>
-        </motion.div>
-
+        </div>
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute bottom-0 left-4 top-0 w-0.5 transform bg-gray-300 dark:bg-gray-600 md:left-1/2 md:-translate-x-0.5"></div>
-
+          <div className="absolute top-0 bottom-0 left-4 w-0.5 transform bg-gray-300 md:left-1/2 md:-translate-x-0.5 dark:bg-gray-600"></div>
           {experienceData.map((exp, index) => (
-            <motion.div
+            <div
               key={exp.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
               className={`relative mb-12 flex items-center ${
                 index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
@@ -45,10 +26,7 @@ const Experience = () => {
               <div
                 className={`ml-12 w-full md:ml-0 md:w-5/12 ${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}
               >
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="rounded-lg bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-800"
-                >
+                <div className="rounded-lg bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-800">
                   <div className="mb-4 space-y-2">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <MapPin size={16} className="mr-2" />
@@ -59,11 +37,9 @@ const Experience = () => {
                       <span>{exp.duration}</span>
                     </div>
                   </div>
-
                   <p className="mb-4 text-gray-700 dark:text-gray-300">
                     {exp.description}
                   </p>
-
                   <div className="space-y-4">
                     <div>
                       <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
@@ -75,7 +51,6 @@ const Experience = () => {
                         ))}
                       </ul>
                     </div>
-
                     <div>
                       <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
                         Technologies:
@@ -92,9 +67,9 @@ const Experience = () => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

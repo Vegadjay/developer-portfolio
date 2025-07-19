@@ -50,6 +50,5 @@ export const aboutMeData: AboutMe = {
     twitter: "https://twitter.com/JAY_VEGAD_",
     leetcode: "https://fuck-leetcode-dusky.vercel.app/",
   },
-  profileImage:
-    "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+  profileImage: "/profile-pic/profile-pic.jpeg",
 };

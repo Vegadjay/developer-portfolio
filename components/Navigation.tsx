@@ -1,238 +1,196 @@
 "use client";
-
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
-import {
-  Sun,
-  Moon,
-  Home,
-  User,
-  Briefcase,
-  FolderOpen,
-  Mail,
-  Code,
-  Github,
-  Linkedin,
-  Menu,
-  X,
-} from "lucide-react";
-import { navigationData } from "@/data/navigation";
-import { Dock, DockIcon } from "./ui/navigation";
-import { Separator } from "./ui/separator";
+import { Home, FolderOpen, Mail, Sun, Moon, Menu, X } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
-  TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./ui/tooltip";
-import { useTheme } from "next-themes";
+  TooltipContent,
+} from "@/components/ui/tooltip";
+import { socialLinks } from "@/data/socialLinks";
 
-const iconMap: Record<string, React.ReactNode> = {
-  "/": <Home size={22} />,
-  "/about": <User size={22} />,
-  "/experience": <Briefcase size={22} />,
-  "/projects": <FolderOpen size={22} />,
-  "/contact": <Mail size={22} />,
-};
-
-const socialIconMap: Record<string, React.ReactNode> = {
-  github: <Github size={22} />,
-  linkedin: <Linkedin size={22} />,
-  leetcode: <Code size={22} />,
-};
+const navLinks = [
+  { href: "/", label: "Home", icon: <Home size={20} /> },
+  { href: "/projects", label: "Projects", icon: <FolderOpen size={20} /> },
+  { href: "/contact", label: "Contact", icon: <Mail size={20} /> },
+];
 
 const Navigation = () => {
-  const { theme, setTheme } = useTheme();
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+  const [showNavbar, setShowNavbar] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
 
-  // Close menu on outside click
   useEffect(() => {
-    if (!mobileMenuOpen) return;
-    function handleClick(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMobileMenuOpen(false);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY.current && currentScrollY > 10) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
       }
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [mobileMenuOpen]);
-
-  // Close menu on navigation
-  function handleNavClick() {
-    setMobileMenuOpen(false);
-  }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <motion.div
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.1 }}
-      className="fixed bottom-6 z-50 flex w-full -translate-x-1/2 transform justify-center"
-    >
-      {/* Mobile: Menu Icon or Close Icon */}
-      <button
-        className="flex items-center justify-center rounded-full border border-zinc-300 bg-zinc-100 p-3 shadow-lg dark:border-zinc-600 dark:bg-zinc-800 sm:hidden"
-        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-        onClick={() => setMobileMenuOpen((v) => !v)}
+    <TooltipProvider delayDuration={200}>
+      <div
+        className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-200 ${
+          mobileMenuOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
+        } sm:hidden`}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden={!mobileMenuOpen}
       >
-        {mobileMenuOpen ? (
-          <X size={28} className="text-zinc-700 dark:text-zinc-200" />
-        ) : (
-          <Menu size={28} className="text-zinc-700 dark:text-zinc-200" />
-        )}
-      </button>
-      {/* Mobile: Menu Drawer */}
-      {mobileMenuOpen && (
-        <div
-          ref={menuRef}
-          className="fixed bottom-20 right-4 z-50 flex w-56 flex-col gap-2 rounded-2xl border border-zinc-300 bg-zinc-100 p-4 shadow-xl animate-in fade-in slide-in-from-bottom-4 dark:border-zinc-600 dark:bg-zinc-800 sm:hidden"
+        <nav
+          className={`absolute right-0 bottom-0 left-0 mx-auto mb-4 flex w-[90vw] max-w-xs flex-col items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-zinc-700 dark:bg-zinc-900 ${
+            mobileMenuOpen
+              ? "translate-y-0 opacity-100"
+              : "translate-y-8 opacity-0"
+          } transition-all duration-300`}
+          onClick={(e) => e.stopPropagation()}
         >
-          {/* Navigation Items */}
-          {navigationData.items.map((item) => (
-            <Link
-              key={item.title}
-              href={item.href}
-              aria-label={item.title}
-              onClick={handleNavClick}
-              className={`flex items-center gap-2 rounded-lg px-3 py-2 text-base font-medium transition-colors duration-200 ${
-                pathname === item.href
-                  ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-100"
-                  : "text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
-              }`}
-            >
-              {iconMap[item.href] || <Home size={20} />}
-              {item.title}
-            </Link>
-          ))}
-          <Separator />
-          {/* Social Links */}
-          <div className="flex justify-center gap-3">
-            {Object.entries(navigationData.socialLinks).map(([key, url]) => (
-              <a
-                key={key}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={key}
-                onClick={handleNavClick}
-                className="flex items-center justify-center rounded-full p-2 text-zinc-600 transition-all duration-300 hover:bg-zinc-200 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
-              >
-                {socialIconMap[key.toLowerCase()] || <Code size={20} />}
-              </a>
-            ))}
-          </div>
-          <Separator />
-          {/* Theme Toggle */}
-          <div className="flex justify-center pt-2">
-            {theme === "dark" ? (
-              <Sun
-                size={22}
-                className="cursor-pointer rounded-full"
-                onClick={() => {
-                  setTheme("light");
-                  setMobileMenuOpen(false);
-                }}
-              />
-            ) : (
-              <Moon
-                size={22}
-                className="cursor-pointer rounded-full"
-                onClick={() => {
-                  setTheme("dark");
-                  setMobileMenuOpen(false);
-                }}
-              />
-            )}
-          </div>
-        </div>
-      )}
-      {/* Desktop: Dock */}
-      <div className="hidden sm:flex">
-        <TooltipProvider>
-          <Dock className="rounded-2xl border border-zinc-300 bg-zinc-100 px-2 py-1 shadow-lg dark:border-zinc-600 dark:bg-zinc-800">
-            {/* Navigation Items */}
-            {navigationData.items.map((item) => (
-              <DockIcon key={item.title}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={item.href}
-                      aria-label={item.title}
-                      className={`size-12 flex items-center justify-center rounded-full transition-all duration-300 ease-out ${
-                        pathname === item.href
-                          ? "scale-110 bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-100"
-                          : "text-zinc-600 hover:scale-105 hover:bg-zinc-200 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
-                      }`}
-                    >
-                      {iconMap[item.href] || <Home size={22} />}
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{item.title}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </DockIcon>
-            ))}
-
-            {/* Divider */}
-            <Separator orientation="vertical" className="mx-2 h-10" />
-
-            {/* Social Links */}
-            {Object.entries(navigationData.socialLinks).map(([key, url]) => (
-              <DockIcon key={key}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={key}
-                      className="size-12 flex items-center justify-center rounded-full text-zinc-600 transition-all duration-300 hover:scale-105 hover:bg-zinc-200 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
-                    >
-                      {socialIconMap[key.toLowerCase()] || <Code size={22} />}
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{key.charAt(0).toUpperCase() + key.slice(1)}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </DockIcon>
-            ))}
-
-            {/* Divider */}
-            <Separator orientation="vertical" className="mx-2 h-10" />
-
-            {/* Theme Toggle */}
-            <DockIcon>
-              <Tooltip>
+          <button
+            className="absolute top-4 right-4 text-zinc-700 dark:text-zinc-300"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={28} />
+          </button>
+          <div className="mt-6 flex flex-col items-center gap-4">
+            {navLinks.map((link) => (
+              <Tooltip key={link.href} delayDuration={200}>
                 <TooltipTrigger asChild>
-                  {theme === "dark" ? (
-                    <Sun
-                      size={22}
-                      className="cursor-pointer rounded-full"
-                      onClick={() => setTheme("light")}
-                    />
-                  ) : (
-                    <Moon
-                      size={22}
-                      className="cursor-pointer rounded-full"
-                      onClick={() => setTheme("dark")}
-                    />
-                  )}
+                  <Link
+                    href={link.href}
+                    className={`flex w-full max-w-xs items-center justify-center gap-3 rounded-lg p-3 text-2xl font-medium transition-colors duration-200 ${
+                      pathname === link.href
+                        ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
+                        : "text-zinc-700 dark:text-zinc-300"
+                    }`}
+                    aria-label={link.label}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.icon}
+                    <span className="text-base font-medium">{link.label}</span>
+                  </Link>
                 </TooltipTrigger>
-                <TooltipContent>
-                  <p>Theme</p>
-                </TooltipContent>
+                <TooltipContent side="right">{link.label}</TooltipContent>
               </Tooltip>
-            </DockIcon>
-          </Dock>
-        </TooltipProvider>
+            ))}
+            <Separator className="h-0.5 w-10 rounded-md bg-zinc-200 dark:bg-zinc-800" />
+            {socialLinks.map((link) => (
+              <Tooltip key={link.href} delayDuration={200}>
+                <TooltipTrigger asChild>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-full max-w-xs items-center justify-center gap-3 rounded-lg p-3 text-2xl text-zinc-600 transition-colors duration-200 dark:text-zinc-400"
+                    aria-label={link.label}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.icon && <span>{link.icon}</span>}
+                    <span className="text-base font-medium">{link.label}</span>
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent side="right">{link.label}</TooltipContent>
+              </Tooltip>
+            ))}
+            <Separator className="h-0.5 w-10 rounded-md bg-zinc-200 dark:bg-zinc-800" />
+
+            <Tooltip delayDuration={200}>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className="flex w-full max-w-xs items-center justify-center gap-3 rounded-lg p-3 text-2xl text-zinc-600 transition-colors duration-200 hover:cursor-pointer dark:text-zinc-400"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
+                  <span className="text-base font-medium">Toggle Theme</span>
+                </button>
+              </TooltipTrigger>
+              <TooltipContent side="right">Toggle Theme</TooltipContent>
+            </Tooltip>
+          </div>
+        </nav>
       </div>
-    </motion.div>
+      <nav
+        className={`fixed bottom-3 left-1/2 z-50 hidden w-full max-w-3xl -translate-x-1/2 transform justify-center px-2 transition-all duration-500 sm:bottom-6 sm:flex ${
+          showNavbar ? "translate-y-0" : "translate-y-64"
+        }`}
+      >
+        <div className="flex w-full justify-center gap-2 rounded-2xl border border-zinc-200 bg-white/80 px-2 py-2 shadow-xl backdrop-blur-md sm:gap-4 sm:px-6 sm:py-3 dark:border-zinc-700 dark:bg-zinc-900/80">
+          {navLinks.map((link) => (
+            <Tooltip key={link.href} delayDuration={200}>
+              <TooltipTrigger asChild>
+                <Link
+                  href={link.href}
+                  className={`flex items-center gap-1 rounded-lg px-2 py-2 text-sm font-medium transition-all duration-200 sm:gap-2 sm:px-3 sm:text-base ${
+                    pathname === link.href
+                      ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
+                      : "text-zinc-700 dark:text-zinc-300"
+                  }`}
+                  aria-label={link.label}
+                >
+                  {link.icon}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="top">{link.label}</TooltipContent>
+            </Tooltip>
+          ))}
+          <Separator className="h-10 w-0.5 rounded-md bg-zinc-200 dark:bg-zinc-800" />
+          {socialLinks.map((link) => (
+            <Tooltip key={link.href} delayDuration={200}>
+              <TooltipTrigger asChild>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 rounded-lg px-2 py-2 text-sm text-zinc-600 transition-all duration-200"
+                  aria-label={link.label}
+                >
+                  {link.icon && <span>{link.icon}</span>}
+                </a>
+              </TooltipTrigger>
+              <TooltipContent side="top">{link.label}</TooltipContent>
+            </Tooltip>
+          ))}
+          <Tooltip delayDuration={200}>
+            <TooltipTrigger asChild>
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center gap-1 rounded-lg px-2 py-2 text-sm text-zinc-600 transition-all duration-200 hover:cursor-pointer"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                <span className="hidden md:inline">
+                  {theme === "dark" ? "Light" : "Dark"}
+                </span>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="top">Toggle Theme</TooltipContent>
+          </Tooltip>
+        </div>
+      </nav>
+      <button
+        className="fixed right-4 bottom-4 z-[70] flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg ring-1 ring-zinc-200 transition sm:hidden dark:bg-zinc-900 dark:ring-zinc-700"
+        onClick={() => setMobileMenuOpen((open) => !open)}
+        aria-label="Open menu"
+        aria-expanded={mobileMenuOpen}
+      >
+        {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+    </TooltipProvider>
   );
 };
 

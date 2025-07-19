@@ -11,9 +11,9 @@ export interface HeroProjects {
 export const heroProjectsData: HeroProjects[] = [
   {
     id: "1",
-    title: "E-Commerce Platform",
+    title: "Rajwadi Poshak | E-Commerce Platform",
     description:
-      "A full-stack e-commerce platform built with Next.js, featuring user authentication, product management, shopping cart, and payment integration with Stripe.",
+      "A full-stack e-commerce platform built with Next.js, featuring user authentication, product management, shopping cart, and payment integration with Stripe. This project is a clone of the popular e-commerce platform, Amazon.",
     technologies: [
       "Next.js",
       "TypeScript",
@@ -22,15 +22,15 @@ export const heroProjectsData: HeroProjects[] = [
       "Prisma",
       "PostgreSQL",
     ],
-    githubUrl: "https://github.com/yourusername/ecommerce-platform",
-    liveUrl: "https://ecommerce-platform.vercel.app",
+    githubUrl: "https://github.com/vegadjay/Rajwadi-Poshak",
+    liveUrl: "https://rajwadiposhak.vercel.app/",
     featured: true,
   },
   {
     id: "2",
-    title: "Task Management App",
+    title: "Guruqool | Freelance project",
     description:
-      "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+      "In this project, we build a platform for student and teacher to connect with each other. This project is a clone of the popular platform, Guruqool.",
     technologies: [
       "React",
       "Node.js",
@@ -39,26 +39,26 @@ export const heroProjectsData: HeroProjects[] = [
       "Express",
       "Material-UI",
     ],
-    githubUrl: "https://github.com/yourusername/task-manager",
-    liveUrl: "https://task-manager-app.netlify.app",
+    githubUrl: "https://github.com/vegadjay/Guruqool-frontend",
+    liveUrl: "https://guruqool.vercel.app/",
     featured: true,
   },
   {
     id: "3",
-    title: "Weather Dashboard",
+    title: "Leetcode Clone | Leetcode Clone",
     description:
-      "A weather dashboard that displays current weather conditions, forecasts, and historical data with interactive charts and maps.",
-    technologies: ["React", "Chart.js", "OpenWeather API", "Leaflet", "CSS3"],
-    githubUrl: "https://github.com/yourusername/weather-dashboard",
-    liveUrl: "https://weather-dashboard.vercel.app",
+      "A leetcode clone that displays current weather conditions, forecasts, and historical data with interactive charts and maps. This project is a clone of the popular leetcode app, Leetcode.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Leetcode API"],
+    githubUrl: "https://github.com/vegadjay/Leetcode-Clone",
+    liveUrl: "https://leetcode-clone-app.vercel.app",
   },
   {
     id: "4",
-    title: "Portfolio Website",
+    title: "Portfolio Website | Portfolio Website",
     description:
-      "A modern, responsive portfolio website showcasing projects, skills, and experience with smooth animations and dark mode support.",
+      "A modern, responsive portfolio website showcasing projects, skills, and experience with smooth animations and dark mode support. This project is a clone of the popular portfolio website, Portfolio Website.",
     technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
-    githubUrl: "https://github.com/yourusername/portfolio",
-    liveUrl: "https://your-portfolio.vercel.app",
+    githubUrl: "https://github.com/vegadjay/Portfolio-Website",
+    liveUrl: "https://portfolio-website-app.vercel.app",
   },
 ];

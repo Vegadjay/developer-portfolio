@@ -16,7 +16,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
             Get In Touch
           </h2>
           <div className="mx-auto mb-8 h-1 w-20 rounded-full bg-blue-500"></div>

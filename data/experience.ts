@@ -15,7 +15,7 @@ export const experienceData: Experience[] = [
   {
     id: "1",
     company: "Google",
-    position: "Software Engineer Intern",
+    position: "Frontend Developer Intern",
     duration: "Jun 2023 - Present",
     startDate: "2023-06",
     endDate: "",
@@ -32,7 +32,7 @@ export const experienceData: Experience[] = [
   {
     id: "2",
     company: "Meta",
-    position: "Software Engineer Intern",
+    position: "Backend Developer Intern",
     duration: "Jan 2023 - May 2023",
     startDate: "2023-01",
     endDate: "2023-05",
@@ -49,7 +49,7 @@ export const experienceData: Experience[] = [
   {
     id: "3",
     company: "Amazon",
-    position: "Software Engineer Intern",
+    position: "Customer-Care Agent",
     duration: "Sep 2022 - Dec 2022",
     startDate: "2022-09",
     endDate: "2022-12",
