@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { projectsData } from "@/data/projects";
-import { ProjectCard } from "@/app/components/ProjectCard";
+import { ProjectCard } from "@/components/ProjectCard";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
 
@@ -46,11 +46,9 @@ export default function ProjectsPage() {
     <div className="flex min-h-screen flex-col bg-white transition-colors duration-300 dark:bg-zinc-900">
       <main className="mx-auto mt-24 mb-28 flex w-full max-w-4xl flex-1 flex-col justify-start space-y-10 px-4 sm:px-6 lg:px-8">
         <h1 className="text-5xl font-bold tracking-tight">Projects</h1>
-        <p>
-          This section is full about my proof of work. Show case and{" "}
-          <Link href="/contact" className="text-blue-500">
-            let&apos;s connect
-          </Link>
+        <p className="text-zinc-600 dark:text-zinc-400">
+          Here&apos;s the stuff, I made because my brain said, &quot;Trust me,
+          this is a good idea&quot;... and I didn&apos;t question it.
         </p>
 
         {/* This is the filter component */}
@@ -76,12 +74,7 @@ export default function ProjectsPage() {
                     : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
                 }`}
               >
-                {tech} (
-                {
-                  projectsData.filter((p) => p.technologies.includes(tech))
-                    .length
-                }
-                )
+                {tech}
               </button>
             ))}
           </div>

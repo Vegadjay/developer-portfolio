@@ -2,78 +2,71 @@
 
 import React from "react";
 import { experienceData } from "@/data/experience";
-import { Calendar, MapPin } from "lucide-react";
+import Image from "next/image";
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
-            Experience
-          </h2>
-          <div className="mx-auto h-1 w-20 rounded-full bg-blue-500"></div>
-        </div>
-        <div className="relative">
-          <div className="absolute top-0 bottom-0 left-4 w-0.5 transform bg-gray-300 md:left-1/2 md:-translate-x-0.5 dark:bg-gray-600"></div>
-          {experienceData.map((exp, index) => (
-            <div
-              key={exp.id}
-              className={`relative mb-12 flex items-center ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
-            >
-              <div
-                className={`ml-12 w-full md:ml-0 md:w-5/12 ${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}
-              >
-                <div className="rounded-lg bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-800">
-                  <div className="mb-4 space-y-2">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400">
-                      <MapPin size={16} className="mr-2" />
-                      <span className="font-semibold">{exp.company}</span>
-                    </div>
-                    <div className="flex items-center text-gray-600 dark:text-gray-400">
-                      <Calendar size={16} className="mr-2" />
-                      <span>{exp.duration}</span>
-                    </div>
-                  </div>
-                  <p className="mb-4 text-gray-700 dark:text-gray-300">
-                    {exp.description}
-                  </p>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
-                        Key Achievements:
-                      </h4>
-                      <ul className="list-inside list-disc space-y-1 text-gray-600 dark:text-gray-400">
-                        {exp.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex}>{achievement}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
-                        Technologies:
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-200"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div className="bg-white py-10 dark:bg-zinc-900">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-3">
+        <h1 className="font-bold text-zinc-900 sm:text-2xl md:text-3xl dark:text-white">
+          Experience
+        </h1>
+        <div className="space-y-4">
+          {experienceData.map((experience) => (
+            <ExperienceCard
+              key={experience.id}
+              title={experience.position}
+              company={experience.company}
+              duration={experience.duration}
+              logo={experience.logo}
+            />
           ))}
         </div>
       </div>
-    </section>
+    </div>
+  );
+};
+
+interface ExperienceCardProps {
+  title: string;
+  company: string;
+  duration: string;
+  logo: string;
+}
+
+const ExperienceCard = ({
+  title,
+  company,
+  duration,
+  logo,
+}: ExperienceCardProps) => {
+  return (
+    <div className="w-full">
+      <div className="rounded-lg border border-zinc-200 bg-transparent p-4 dark:border-zinc-700">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-800">
+              <span className="text-lg font-bold text-zinc-600 dark:text-zinc-400">
+                <Image src={logo} alt={company} width={48} height={48} />
+              </span>
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
+                {title}
+              </h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                {company}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">
+              {duration}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

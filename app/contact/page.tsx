@@ -132,8 +132,8 @@ const ContactPage = () => {
               </h2>
               <p className="leading-relaxed text-gray-700 dark:text-gray-300">
                 Feel free to reach out with any questions, project inquiries, or
-                collaboration opportunities. I'm always open to discussing new
-                projects and ideas!
+                collaboration opportunities. I&apos;m always open to discussing
+                new projects and ideas!
               </p>
             </div>
 
