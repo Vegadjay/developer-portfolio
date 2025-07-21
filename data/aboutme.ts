@@ -17,7 +17,7 @@ export interface AboutMe {
 
 export const aboutMeData: AboutMe = {
   name: "Jay Vegad",
-  title: "Frontend Engineer",
+  title: "Software Engineer",
   description: `As a Developer, I am a passionate professional dedicated to bringing innovative ideas to life through code. I love working with JavaScript and specialize in building engaging, high-performance web applications. My expertise lies heavily in web development, creating responsive interfaces and interactive user experiences. I work extensively with frameworks and libraries such as Next.js, Tailwind CSS, and Motion, along with various animation tools to create modern, performant web applications. I also have experience delivering projects for clients, ensuring high-quality results tailored to their specific needs and requirements. Eager to grow and collaborate, I am currently seeking remote opportunities with companies worldwide that value innovation and quality.`,
   location: "Rajkot, Gujarat, India",
   email: "jayvegad10@gmail.com",
