@@ -197,3 +197,7 @@ npm run build
 1. Run `npm install` to ensure all dependencies are installed
 2. Check TypeScript errors with `npm run lint`
 3. Ensure all environment variables are properly set
+
+## ⭐️ Drop a Star!
+
+If you find this project helpful or inspiring, please consider [starring the repository on GitHub](https://github.com/Vegadjay/developer-portfolio)! Your support means a lot and helps others discover the project.

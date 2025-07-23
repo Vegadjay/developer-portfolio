@@ -160,5 +160,3 @@ Welcome to your fully customizable portfolio! This guide will help you get start
 Just update the files in the `data/` folder to make it truly yours.
 
 ---
-
-Would you like this written to `SETUP.md` in your project?
