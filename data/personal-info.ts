@@ -43,19 +43,7 @@ export const personalInfo: PersonalInfo = {
   phone: "+91 8849251028",
 
   // Your technical skills (displayed in Skills section)
-  skills: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "Python",
-    "Java",
-    "SQL",
-    "MongoDB",
-    "Docker",
-    "Kubernetes",
-    "CI/CD",
-  ],
+  skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shit posting"],
 
   // Your social media and professional links
   socialLinks: {
