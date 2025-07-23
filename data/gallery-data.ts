@@ -20,32 +20,34 @@ export const galleryData: GalleryConfig = {
 
   // Images for left column (add paths relative to public folder)
   leftImages: [
-    "/hackathon/1.jpeg",
-    "/hackathon/2.jpeg",
-    "/hackathon/3.jpeg",
-    "/hackathon/4.jpeg",
-    "/hackathon/5.jpeg",
+    "/photo-gallery/1.jpeg",
+    "/photo-gallery/2.jpeg",
+    "/photo-gallery/3.jpeg",
+    "/photo-gallery/4.jpeg",
+    "/photo-gallery/5.jpeg",
   ],
 
   // Images for right column
   rightImages: [
-    "/hackathon/6.jpeg",
-    "/hackathon/7.jpeg",
-    "/hackathon/8.jpeg",
-    "/hackathon/9.jpeg",
-    "/hackathon/10.jpeg",
+    "/photo-gallery/6.jpeg",
+    "/photo-gallery/7.jpeg",
+    "/photo-gallery/8.jpeg",
+    "/photo-gallery/9.jpeg",
+    "/photo-gallery/10.jpeg",
   ],
 
   // Images for center column
   centerImages: [
-    "/hackathon/11.jpeg",
-    "/hackathon/12.jpeg",
-    "/hackathon/13.jpeg",
-    "/hackathon/14.jpeg",
-    "/hackathon/15.jpeg",
+    "/photo-gallery/11.jpeg",
+    "/photo-gallery/12.jpeg",
+    "/photo-gallery/13.jpeg",
+    "/photo-gallery/14.jpeg",
+    "/photo-gallery/15.jpeg",
   ],
 
   // Image dimensions (in pixels)
+  // If possible, Than do not change the image dimensions.
+
   imageWidth: 230,
   imageHeight: 150,
 };
