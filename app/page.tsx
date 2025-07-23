@@ -18,7 +18,7 @@ import {
   showSkills,
   showHero,
   showFooter,
-} from "@/data/featureToggles";
+} from "@/data/site-config";
 
 export default function Home() {
   return (

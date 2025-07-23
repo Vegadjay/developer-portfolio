@@ -9,7 +9,7 @@ import {
   imageWidth,
   imageHeight,
   title,
-} from "@/data/photogallerydata";
+} from "@/data/gallery-data";
 
 interface MarqueeSectionProps {
   images: string[];

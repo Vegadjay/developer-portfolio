@@ -1,3 +1,10 @@
+/**
+ * ALL PROJECTS CONFIGURATION
+ *
+ * This file contains all your projects that appear in the projects section.
+ * Include everything from major projects to small learning experiments.
+ */
+
 export interface Project {
   id: string;
   title: string;
@@ -9,7 +16,7 @@ export interface Project {
   featured?: boolean;
 }
 
-export const projectsData: Project[] = [
+export const allProjects: Project[] = [
   {
     id: "1",
     title: "Rajwadi Poshak | E-Commerce",
@@ -149,3 +156,14 @@ export const projectsData: Project[] = [
     image: "/projects/sardar-patel.jpg",
   },
 ];
+
+/**
+ * HOW TO ADD NEW PROJECTS:
+ *
+ * 1. Copy the project structure above
+ * 2. Update the id to be unique
+ * 3. Add your project details
+ * 4. Include project image in public/projects/ folder
+ * 5. Set featured: true for your best projects
+ * 6. Projects appear in order, so put important ones first
+ */

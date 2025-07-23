@@ -1,18 +1,18 @@
 "use client";
 
 import React from "react";
-import { experienceData } from "@/data/experience";
+import { workExperience } from "@/data/work-experience";
 import Image from "next/image";
 
 const Experience = () => {
   return (
     <div className="bg-white py-10 dark:bg-zinc-900">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-3">
+      <div className="mx-auto max-w-4xl space-y-3 px-4 sm:px-6 lg:px-8">
         <h1 className="font-bold text-zinc-900 sm:text-2xl md:text-3xl dark:text-white">
           Experience
         </h1>
         <div className="space-y-4">
-          {experienceData.map((experience) => (
+          {workExperience.map((experience) => (
             <ExperienceCard
               key={experience.id}
               title={experience.position}

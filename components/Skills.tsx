@@ -1,5 +1,5 @@
 import React from "react";
-import { aboutMeData } from "@/data/aboutme";
+import { personalInfo } from "@/data/personal-info";
 
 const Skills = () => (
   <div className="mx-auto max-w-4xl space-y-3 px-4 sm:px-6 lg:px-8">
@@ -7,7 +7,7 @@ const Skills = () => (
       Skills & Tools
     </h2>
     <div className="flex flex-wrap gap-2">
-      {aboutMeData.skills.map((skill) => (
+      {personalInfo.skills.map((skill) => (
         <span
           key={skill}
           className="cursor-default rounded-md bg-zinc-100 px-3 py-1 text-base font-semibold text-zinc-900 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { projectsData } from "@/data/projects";
+import { allProjects } from "@/data/all-projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
@@ -12,7 +12,7 @@ export default function ProjectsPage() {
   // This function is for get all the technologies from the projects
   const allTechnologies = useMemo(() => {
     const techSet = new Set<string>();
-    projectsData.forEach((project) => {
+    allProjects.forEach((project) => {
       project.technologies.forEach((tech) => techSet.add(tech));
     });
     return Array.from(techSet).sort();
@@ -21,9 +21,9 @@ export default function ProjectsPage() {
   // And this function is for filter the projects based on the user preferences
   const filteredProjects = useMemo(() => {
     if (selectedTechs.length === 0) {
-      return projectsData;
+      return allProjects;
     }
-    return projectsData.filter((project) =>
+    return allProjects.filter((project) =>
       project.technologies.some((tech) => selectedTechs.includes(tech)),
     );
   }, [selectedTechs]);

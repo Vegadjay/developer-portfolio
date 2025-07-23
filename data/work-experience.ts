@@ -1,4 +1,11 @@
-export interface Experience {
+/**
+ * WORK EXPERIENCE CONFIGURATION
+ *
+ * This file contains all your work experience entries.
+ * Add, remove, or modify entries to reflect your professional journey.
+ */
+
+export interface WorkExperience {
   id: string;
   company: string;
   position: string;
@@ -11,14 +18,14 @@ export interface Experience {
   logo: string;
 }
 
-export const experienceData: Experience[] = [
+export const workExperience: WorkExperience[] = [
   {
     id: "1",
     company: "Google",
     position: "Frontend Developer Intern",
     duration: "Jun 2023 - Present",
     startDate: "2023-06",
-    endDate: "",
+    endDate: "", // Leave empty for current position
     description:
       "Working on responsive web applications using React and TypeScript. Collaborating with senior developers to implement new features and improve user experience.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Git"],
@@ -64,3 +71,13 @@ export const experienceData: Experience[] = [
     logo: "https://static.vecteezy.com/system/resources/previews/014/018/561/non_2x/amazon-logo-on-transparent-background-free-vector.jpg",
   },
 ];
+
+/**
+ * HOW TO ADD NEW EXPERIENCE:
+ *
+ * 1. Copy the structure above and add a new object to the array
+ * 2. Update the id to be unique
+ * 3. Fill in your company details
+ * 4. Add your technologies and achievements
+ * 5. Use a company logo URL or upload to public folder
+ */

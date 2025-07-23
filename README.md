@@ -1,121 +1,164 @@
-# Portfolio Website with Contact Form
+---
+# 🚀 SETUP.md
 
-A modern portfolio website built with Next.js, TypeScript, and Tailwind CSS, featuring a functional contact form with Nodemailer integration.
+## Portfolio Project Setup & Customization Guide
 
-## Features
+Welcome to your fully customizable portfolio! This guide will help you get started, run, and personalize your portfolio from scratch.
+---
 
-- 🎨 Modern, responsive design with dark/light theme support
-- 📧 Functional contact form with email sending capability
-- 🔒 Form validation and error handling
-- 📱 Mobile-friendly interface
-- ⚡ Built with Next.js 13+ and TypeScript
+## 1. Prerequisites
 
-## Setup Instructions
+- **Node.js** (v18+ recommended)
+- **npm** (comes with Node.js)
+- **Git** (optional, for version control)
 
-### 1. Install Dependencies
+---
 
-```bash
-npm install
-```
+## 2. Installation
 
-### 2. Email Configuration
+1. **Clone the repository:**
 
-To enable the contact form functionality, you need to configure your email settings:
+   ```sh
+   git clone <your-repo-url>
+   cd project
+   ```
 
-1. **Create a `.env.local` file** in the root directory with the following variables:
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
 
-```env
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASS=your-app-password
-```
+---
 
-2. **For Gmail users**, you need to use an App Password:
-   - Go to your [Google Account settings](https://myaccount.google.com/)
-   - Enable 2-factor authentication if not already enabled
-   - Go to Security → App passwords
-   - Generate a new app password for your application
-   - Use this app password in the `EMAIL_PASS` variable
+## 3. Running the Project
 
-### 3. Run the Development Server
+- **Development mode:**
 
-```bash
-npm run dev
-```
+  ```sh
+  npm run dev
+  ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the website.
+  Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 4. Build for Production
+- **Production build:**
+  ```sh
+  npm run build
+  npm start
+  ```
 
-```bash
-npm run build
-```
+---
 
-## Contact Form Features
+## 4. Project Structure
 
-- **Form Validation**: Validates name, email, and message fields
-- **Email Sending**: Sends emails using Nodemailer with Gmail SMTP
-- **Success/Error Handling**: Shows appropriate toast notifications
-- **Loading States**: Displays loading state during form submission
-- **Responsive Design**: Works perfectly on all device sizes
+- **`app/`**: Next.js app directory (pages, layouts, API routes)
+- **`components/`**: All React components (UI, sections, cards, etc.)
+- **`data/`**: All portfolio content and configuration (edit here to customize!)
+- **`public/`**: Static assets (images, resume, etc.)
+- **`hooks/`**: Custom React hooks
+- **`lib/`**: Utility functions
 
-## File Structure
+---
 
-```
-├── app/
-│   ├── api/contact/route.ts    # Email API endpoint
-│   ├── components/Contact.tsx   # Contact form component
-│   └── ...
-├── components/
-│   └── ui/                     # UI components
-├── data/                       # Static data
-└── ...
-```
+## 5. Customizing Your Portfolio
 
-## Environment Variables
+### a. Personal Information
 
-- `EMAIL_USER`: Your Gmail address
-- `EMAIL_PASS`: Your Gmail app password
+- **File:** `data/personal-info.ts`
+- **Edit:** Name, title, bio, contact info, skills, social links, profile image
 
-## Technologies Used
+### b. Work Experience
 
-- **Next.js 13+**: React framework
-- **TypeScript**: Type safety
-- **Tailwind CSS**: Styling
-- **Nodemailer**: Email sending
-- **Sonner**: Toast notifications
-- **React Icons**: Icon library
+- **File:** `data/work-experience.ts`
+- **Edit:** Add/remove jobs, companies, roles, dates, descriptions, achievements
 
-## Security Notes
+### c. Projects
 
-- Never commit your `.env.local` file to version control
-- Use app passwords instead of regular passwords for Gmail
-- The contact form includes input validation and sanitization
-- All API routes include proper error handling
+- **Featured Projects:** `data/featured-projects.ts` (for homepage/hero)
+- **All Projects:** `data/all-projects.ts` (for full projects page)
+- **Edit:** Title, description, tech stack, links, images
 
-## Customization
+### d. Photo Gallery
 
-You can customize the contact form by:
+- **File:** `data/gallery-data.ts`
+- **Edit:** Add/remove images, change gallery title, adjust layout
 
-- Modifying the email template in `app/api/contact/route.ts`
-- Updating form validation rules
-- Changing the styling in `app/components/Contact.tsx`
-- Adding additional form fields as needed
+### e. Social Links
 
-## Troubleshooting
+- **File:** `data/social-links.ts`
+- **Edit:** Add/remove social media or professional links
 
-### Email Not Sending
+### f. Site Sections
 
-1. Check your `.env.local` file has correct credentials
-2. Ensure you're using an app password for Gmail
-3. Check the browser console for any errors
-4. Verify your Gmail account allows "less secure app access" or use app passwords
+- **File:** `data/site-config.ts`
+- **Edit:** Show/hide sections (about, projects, gallery, contact, etc.)
 
-### Build Errors
+---
 
-1. Run `npm install` to ensure all dependencies are installed
-2. Check TypeScript errors with `npm run lint`
-3. Ensure all environment variables are properly set
+## 6. Adding Images & Assets
 
-## License
+- **Profile Picture:** Place in `public/profile-pic/` and update path in `personal-info.ts`
+- **Project Images:** Place in `public/projects/` and update paths in project files
+- **Gallery Images:** Place in `public/hackathon/` or `public/photo-gallery/` and update `gallery-data.ts`
+- **Resume:** Place PDF in `public/resume/` and update link in `personal-info.ts`
 
-This project is open source and available under the [MIT License](LICENSE).
+---
+
+## 7. Advanced Customization
+
+- **UI Components:** Edit or add new components in `components/` or `components/ui/`
+- **API Routes:** Customize backend logic in `app/api/`
+- **Styling:** Edit `app/globals.css` or use Tailwind CSS classes in components
+
+---
+
+## 8. Deployment
+
+- **Vercel:** Recommended for Next.js. Connect your repo and deploy.
+- **Other:** Supports any Node.js hosting (Netlify, AWS, DigitalOcean, etc.)
+
+---
+
+## 9. Useful Scripts
+
+- **Lint code:** `npm run lint`
+- **Format code:** `npm run format`
+- **Type check:** `npm run type-check`
+
+---
+
+## 10. Troubleshooting
+
+- **Build errors:** Check for missing/incorrect imports or TypeScript errors.
+- **Image not showing:** Ensure correct path and file exists in `public/`.
+- **Section not updating:** Restart dev server after data changes.
+
+---
+
+## 11. Where to Edit What?
+
+| Section        | File                        |
+| -------------- | --------------------------- |
+| Name/Bio       | `data/personal-info.ts`     |
+| Experience     | `data/work-experience.ts`   |
+| Projects       | `data/all-projects.ts`      |
+| Featured Proj. | `data/featured-projects.ts` |
+| Gallery        | `data/gallery-data.ts`      |
+| Social Links   | `data/social-links.ts`      |
+| Site Sections  | `data/site-config.ts`       |
+
+---
+
+## 12. Getting Help
+
+- **Check comments** in each data file for instructions.
+- **Refer to** `README.md` for more details.
+- **Ask for help** in your team or community if stuck.
+
+---
+
+**Enjoy your new, easy-to-edit portfolio!**  
+Just update the files in the `data/` folder to make it truly yours.
+
+---
+
+Would you like this written to `SETUP.md` in your project?

@@ -11,7 +11,25 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import { socialLinks } from "@/data/socialLinks";
+import { socialLinks } from "@/data/social-links";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaMedium,
+  FaInstagram,
+} from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+
+// Icon mapping for social links
+const iconMap = {
+  github: <FaGithub size={20} />,
+  linkedin: <FaLinkedin size={20} />,
+  twitter: <FaTwitter size={20} />,
+  leetcode: <SiLeetcode size={20} />,
+  medium: <FaMedium size={20} />,
+  instagram: <FaInstagram size={20} />,
+};
 
 const navLinks = [
   { href: "/", label: "Home", icon: <Home size={20} /> },
@@ -108,7 +126,11 @@ const Navigation = () => {
                       aria-label={link.label}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {link.icon && <span>{link.icon}</span>}
+                      {iconMap[link.iconName as keyof typeof iconMap] && (
+                        <span>
+                          {iconMap[link.iconName as keyof typeof iconMap]}
+                        </span>
+                      )}
                       <span className="text-base font-medium">
                         {link.label}
                       </span>
@@ -169,7 +191,11 @@ const Navigation = () => {
                     className="flex items-center gap-1 rounded-lg px-2 py-2 text-sm text-zinc-600 transition-all duration-200"
                     aria-label={link.label}
                   >
-                    {link.icon && <span>{link.icon}</span>}
+                    {iconMap[link.iconName as keyof typeof iconMap] && (
+                      <span>
+                        {iconMap[link.iconName as keyof typeof iconMap]}
+                      </span>
+                    )}
                   </a>
                 </TooltipTrigger>
                 <TooltipContent side="top">{link.label}</TooltipContent>
@@ -260,7 +286,11 @@ const Navigation = () => {
                     aria-label={link.label}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {link.icon && <span>{link.icon}</span>}
+                    {iconMap[link.iconName as keyof typeof iconMap] && (
+                      <span>
+                        {iconMap[link.iconName as keyof typeof iconMap]}
+                      </span>
+                    )}
                     <span className="text-base font-medium">{link.label}</span>
                   </a>
                 </TooltipTrigger>
@@ -320,7 +350,11 @@ const Navigation = () => {
                   className="flex items-center gap-1 rounded-lg px-2 py-2 text-sm text-zinc-600 transition-all duration-200"
                   aria-label={link.label}
                 >
-                  {link.icon && <span>{link.icon}</span>}
+                  {iconMap[link.iconName as keyof typeof iconMap] && (
+                    <span>
+                      {iconMap[link.iconName as keyof typeof iconMap]}
+                    </span>
+                  )}
                 </a>
               </TooltipTrigger>
               <TooltipContent side="top">{link.label}</TooltipContent>
