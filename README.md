@@ -94,14 +94,94 @@ npm run build
 - The contact form includes input validation and sanitization
 - All API routes include proper error handling
 
-## Customization
+## 5. Customizing Your Portfolio
 
-You can customize the contact form by:
+### a. Personal Information
 
-- Modifying the email template in `app/api/contact/route.ts`
-- Updating form validation rules
-- Changing the styling in `app/components/Contact.tsx`
-- Adding additional form fields as needed
+- **File:** `data/personal-info.ts`
+- **Edit:** Name, title, bio, contact info, skills, social links, profile image
+
+### b. Work Experience
+
+- **File:** `data/work-experience.ts`
+- **Edit:** Add/remove jobs, companies, roles, dates, descriptions, achievements
+
+### c. Projects
+
+- **Featured Projects:** `data/featured-projects.ts` (for homepage/hero)
+- **All Projects:** `data/all-projects.ts` (for full projects page)
+- **Edit:** Title, description, tech stack, links, images
+
+### d. Photo Gallery
+
+- **File:** `data/gallery-data.ts`
+- **Edit:** Add/remove images, change gallery title, adjust layout
+
+### e. Social Links
+
+- **File:** `data/social-links.ts`
+- **Edit:** Add/remove social media or professional links
+
+### f. Site Sections
+
+- **File:** `data/site-config.ts`
+- **Edit:** Show/hide sections (about, projects, gallery, contact, etc.)
+
+---
+
+## 6. Adding Images & Assets
+
+- **Profile Picture:** Place in `public/profile-pic/` and update path in `personal-info.ts`
+- **Project Images:** Place in `public/projects/` and update paths in project files
+- **Gallery Images:** Place in `public/hackathon/` or `public/photo-gallery/` and update `gallery-data.ts`
+- **Resume:** Place PDF in `public/resume/` and update link in `personal-info.ts`
+
+---
+
+## 7. Advanced Customization
+
+- **UI Components:** Edit or add new components in `components/` or `components/ui/`
+- **API Routes:** Customize backend logic in `app/api/`
+- **Styling:** Edit `app/globals.css` or use Tailwind CSS classes in components
+
+---
+
+## 8. Deployment
+
+- **Vercel:** Recommended for Next.js. Connect your repo and deploy.
+- **Other:** Supports any Node.js hosting (Netlify, AWS, DigitalOcean, etc.)
+
+---
+
+## 9. Useful Scripts
+
+- **Lint code:** `npm run lint`
+- **Format code:** `npm run format`
+- **Type check:** `npm run type-check`
+
+---
+
+## 10. Troubleshooting
+
+- **Build errors:** Check for missing/incorrect imports or TypeScript errors.
+- **Image not showing:** Ensure correct path and file exists in `public/`.
+- **Section not updating:** Restart dev server after data changes.
+
+---
+
+## 11. Where to Edit What?
+
+| Section        | File                        |
+| -------------- | --------------------------- |
+| Name/Bio       | `data/personal-info.ts`     |
+| Experience     | `data/work-experience.ts`   |
+| Projects       | `data/all-projects.ts`      |
+| Featured Proj. | `data/featured-projects.ts` |
+| Gallery        | `data/gallery-data.ts`      |
+| Social Links   | `data/social-links.ts`      |
+| Site Sections  | `data/site-config.ts`       |
+
+---
 
 ## Troubleshooting
 
@@ -117,7 +197,3 @@ You can customize the contact form by:
 1. Run `npm install` to ensure all dependencies are installed
 2. Check TypeScript errors with `npm run lint`
 3. Ensure all environment variables are properly set
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).

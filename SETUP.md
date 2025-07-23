@@ -19,8 +19,8 @@ Welcome to your fully customizable portfolio! This guide will help you get start
 1. **Clone the repository:**
 
    ```sh
-   git clone <your-repo-url>
-   cd project
+   git clone https://github.com/Vegadjay/developer-portfolio.git
+   cd developer-portfolio
    ```
 
 2. **Install dependencies:**
